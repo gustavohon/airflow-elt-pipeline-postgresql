@@ -1,86 +1,94 @@
-Olá! Este é o meu projeto para o desafio de Engenharia de Dados da Lighthouse que recebi via e-mail.
+Pipeline de Dados para Análise Financeira com Airflow e Docker
+🎯 Objetivo do Projeto
+Este projeto demonstra a construção de um pipeline de dados ELT (Extract, Load, Transform) de ponta a ponta, simulando um cenário real de engenharia de dados para uma instituição financeira.
 
-O objetivo aqui foi construir um pipeline de dados do zero de acordo com o desafio enviado no Word sobre Engenharia de Dados. A ideia era pegar dados de lugares diferentes (um banco de dados antigo e um arquivo CSV), organizar tudo e carregar em um lugar central e confiável, que chamamos de Data Warehouse. Todo esse processo é automatizado usando uma ferramenta chamada Apache Airflow.
+O objetivo principal é consolidar dados de fontes heterogêneas — um banco de dados transacional (PostgreSQL) e arquivos de dados brutos (CSV) — em um Data Warehouse centralizado, pronto para análises e business intelligence. Todo o processo é orquestrado e automatizado com o Apache Airflow, garantindo que o pipeline seja robusto, agendável e idempotente.
 
-Basicamente, eu criei uma linha de montagem de dados que faz o seguinte:
+🏗️ Arquitetura e Fluxo de Dados
+O pipeline foi projetado para ser eficiente e escalável, seguindo as melhores práticas de engenharia de dados:
 
-1. **Busca os Dados:** O processo começa buscando dados de dois lugares ao mesmo tempo para ser mais rápido:
+Extração Paralela:
 
-      * As informações principais do banco "BanVic" (clientes, contas, etc.)
-      * Um arquivo CSV com todas as transações financeiras.
+Os dados são extraídos simultaneamente de duas fontes para otimizar o tempo de execução:
 
-2. **Organiza a Bagunça:** Antes de carregar, os dados são salvos como novos arquivos CSV em uma pasta temporária chamada "output". Eles são organizados por data, para sabermos exatamente o que foi extraído em cada dia.
+Banco de Dados Relacional: Informações cadastrais de clientes, agências, contas e colaboradores de um banco de dados PostgreSQL.
 
-3. **Carrega no Destino Final:** Depois que a busca dos dados termina com sucesso, a linha de montagem pega esses arquivos organizados e os carrega no nosso Data Warehouse, que é um banco de dados PostgreSQL criado do zero. Uma regra importante que implementei aqui é que, se rodarmos o processo de novo no mesmo dia, os dados antigos são apagados antes de carregar os novos. Isso evita duplicação de dados.
+Arquivos CSV: Dados históricos de transações financeiras.
 
-## Ferramentas usadas no projeto
+Staging (Área de Passagem):
 
-  * **Orquestração:** Apache Airflow (para ser o chefe que comanda/gerencia todo o processo)
-  * **Ambiente:** Docker e Docker Compose (para criar máquinas virtuais e garantir que o projeto rode em qualquer computador, evitar o famoso "funciona na minha máquina")
-  * **Linguagem:** Python 3
-  * **Banco de Dados:** PostgreSQL
-  * **Bibliotecas Auxiliares:** Utilizei "pandas" para mexer com os dados como se fossem planilhas, e "psycopg2/SQLAlchemy" para fazer o Python conversar com os bancos de dados, são bibliotecas mais modernas e que funcionam melhor.
+Os dados brutos extraídos são padronizados para o formato CSV e salvos em uma área de passagem (staging area). Os arquivos são organizados em diretórios com a data da execução, criando um histórico e facilitando a depuração.
 
-## Como rodar o projeto
+Carregamento (Load):
 
-Tutorial:
+Após a conclusão bem-sucedida de ambas as extrações, uma tarefa de carregamento é acionada.
 
-**O que você precisa ter instalado:**
-  * Docker (Compose)
-  * Python 3
-  * VS Code
+Ela lê os arquivos da área de passagem e os insere em tabelas correspondentes em um Data Warehouse PostgreSQL dedicado.
 
-**Passo a passo:**
+A lógica de carregamento utiliza if_exists='replace' para garantir a idempotência, permitindo que o pipeline seja re-executado para o mesmo dia sem risco de duplicar dados.
 
-1.  **Preparar o ambiente:**
-    Depois de baixar a pasta do projeto, só precisa garantir que o arquivo "transacoes.csv" esteja na pasta "data/" e o "banvic.sql" esteja na pasta principal. Também é necessário que "docker-compose.yaml" e "docker-compose-banco-de-dados.yml" esteja na pasta raiz do projeto.
+🛠️ Tecnologias Utilizadas
+Orquestração: Apache Airflow
 
-2.  **Ligar as Máquinas:**
-    Abra o terminal na pasta principal do projeto (também pode ser pelo VS Code desde que esteja na pasta raiz do projeto) e rode o comando abaixo. Ele vai construir e iniciar todos os containers do nosso Docker (o banco de dados antigo, o Airflow e o nosso Data Warehouse).
+Contêineres: Docker e Docker Compose
 
-    docker-compose -f docker-compose-banco-de-dados.yml up -d
-    docker-compose up -d --build
-	
-    **Atenção**: Esse processo pode levar uns 2 ou 3 minutos dependendo do seu hardware e da sua conexão com a rede/internet.
+Linguagem: Python
 
-3.  **Visitar o Painel de Controle (Airflow):**
-    Quando tudo estiver pronto, abra seu navegador e vá para "http://localhost:8080".
-	Para entrar, use:
-    **Login:** airflow
-    **Senha:** airflow
+Bancos de Dados: PostgreSQL (tanto como fonte quanto como Data Warehouse)
 
-4.  **Dashboard**
+Bibliotecas Python: pandas para manipulação de dados, psycopg2 e SQLAlchemy para a interação com os bancos de dados.
 
-      * Na tela do Airflow, clique no botão de DAG no painel da esquerda. Irá abrir a parte de DAG, nessa tela você procure pelo pipeline "pipeline_dados_indicium".
-      * Ative-o no botão à esquerda.
-      * Para rodar, é só clicar no botão de "Trigger" que fica do lado direito.
+▶️ Como Executar o Projeto
+Pré-requisitos:
 
-5.  **Parar a execução**
+Docker
 
-      * Para parar a execução do Docker, utilizem esses comandos:
+Docker Compose
 
-      docker-compose -f docker-compose-banco-de-dados.yml down
-      docker-compose up down
+Passo a passo para a execução:
 
-      * Também é possível deletar usando o parâmetro -v (Mas tomem cuidado pois isso apaga tudo)
+Clone o repositório para a sua máquina.
 
-## Check List caso tenha dado certo
+Inicie o Ambiente Docker:
+Abra um terminal na pasta raiz do projeto e execute o comando abaixo. Ele irá construir e iniciar todos os serviços necessários (o banco de dados fonte, o Airflow e o Data Warehouse).
 
-Depois que o pipeline rodar (as tarefas na interface do Airflow ficarão verdes), você pode confirmar o sucesso de duas formas:
+Bash
 
-1.  **Os Arquivos Temporários:**
-    Dê uma olhada na pasta "output". Você verá que ela foi criada com os arquivos CSV que a primeira etapa do processo gerou.
+docker-compose up -d --build
+Aguarde alguns minutos para que todos os serviços do Airflow estejam completamente no ar.
 
-2.  **Data Warehouse (PostgreSQL):**
-    Nesse momento, conseguimos ver que os dados já foram alimentados ao banco de dados. Use um programa de banco de dados de sua preferencia (eu usei a extensão do VS Code) para conectar ao Data Warehouse.
+Acesse a Interface do Airflow:
+Abra seu navegador e acesse http://localhost:8080. As credenciais padrão são:
 
-      * **Host:** "localhost"
-      * **Port:** "5433"
-      * **User:** "dw_user"
-      * **Password:** "dw_password"
-      * **Banco de Dados:** "data_warehouse"
+Login: airflow
 
-    Lá dentro, você vai encontrar as 5 tabelas ("agencias", "clientes", etc.) com todos os dados organizados.
+Senha: airflow
 
-Obrigado pela oportunidade e pela atenção!
-Fico a disposição!
+Execute o Pipeline:
+
+Na interface do Airflow, localize a DAG pipeline_dados_indicium.
+
+Ative-a utilizando o botão de "toggle" à esquerda.
+
+Inicie uma execução manual clicando no botão de "Play" (▶️) à direita.
+
+✅ Verificando o Resultado
+Após a execução bem-sucedida da DAG (todas as tarefas ficarão verdes na interface), você pode confirmar o resultado:
+
+Arquivos de Staging:
+Uma pasta output/ será criada na raiz do projeto, contendo os arquivos CSV extraídos e organizados por data.
+
+Dados no Data Warehouse:
+Utilize um cliente de banco de dados de sua preferência para se conectar ao Data Warehouse:
+
+Host: localhost
+
+Porta: 5433
+
+Usuário: dw_user
+
+Senha: dw_password
+
+Banco de Dados: data_warehouse
+
+Dentro do banco, você encontrará as cinco tabelas (agencias, clientes, colaboradores, contas e transacoes) populadas com os dados processados pelo pipeline.
