@@ -1,0 +1,13 @@
+{"timestamp":"2025-09-12T15:14:12.430635","level":"info","event":"DAG bundles loaded: dags-folder, example_dags","logger":"airflow.dag_processing.bundles.manager.DagBundlesManager"}
+{"timestamp":"2025-09-12T15:14:12.433226","level":"info","event":"Filling up the DagBag from /opt/airflow/dags/pipeline_indicium.py","logger":"airflow.models.dagbag.DagBag"}
+{"timestamp":"2025-09-12T15:14:14.795927Z","level":"info","event":"Task instance is in running state","chan":"stdout","logger":"task"}
+{"timestamp":"2025-09-12T15:14:14.806163Z","level":"info","event":" Previous state of the Task instance: TaskInstanceState.QUEUED","chan":"stdout","logger":"task"}
+{"timestamp":"2025-09-12T15:14:14.823376Z","level":"info","event":"Current task name:extrair_csv","chan":"stdout","logger":"task"}
+{"timestamp":"2025-09-12T15:14:14.827582Z","level":"info","event":"Dag name:pipeline_dados_indicium","chan":"stdout","logger":"task"}
+{"timestamp":"2025-09-12T15:14:14.829994Z","level":"info","event":"Iniciando a extração do arquivo CSV...","chan":"stdout","logger":"task"}
+{"timestamp":"2025-09-12T15:14:18.512047Z","level":"info","event":"Arquivo salvo com sucesso em: /opt/airflow/src/indicium-projeto/output/2025-09-12/csv/transacoes_2025-09-12.csv","chan":"stdout","logger":"task"}
+{"timestamp":"2025-09-12T15:14:18.523740Z","level":"info","event":"Extração do CSV concluída!","chan":"stdout","logger":"task"}
+{"timestamp":"2025-09-12T15:14:18.521664","level":"info","event":"Done. Returned value was: None","logger":"airflow.task.operators.airflow.providers.standard.operators.python.PythonOperator"}
+{"timestamp":"2025-09-12T15:14:20.123728Z","level":"info","event":"Task instance in success state","chan":"stdout","logger":"task"}
+{"timestamp":"2025-09-12T15:14:20.144731Z","level":"info","event":" Previous state of the Task instance: TaskInstanceState.RUNNING","chan":"stdout","logger":"task"}
+{"timestamp":"2025-09-12T15:14:20.167608Z","level":"info","event":"Task operator:<Task(PythonOperator): extrair_csv>","chan":"stdout","logger":"task"}

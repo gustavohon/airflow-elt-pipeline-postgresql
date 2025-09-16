@@ -1,0 +1,12 @@
+# Arquivos de cache e compilados do Python
+__pycache__/
+*.pyc
+
+# Pasta de saída dos dados extraídos
+output/
+
+# Arquivo de ambiente (se contivesse senhas reais)
+.env
+
+# Arquivos de sistema
+.DS_Store

@@ -1,0 +1,48 @@
+{"timestamp":"2025-09-12T15:14:22.210515","level":"info","event":"DAG bundles loaded: dags-folder, example_dags","logger":"airflow.dag_processing.bundles.manager.DagBundlesManager"}
+{"timestamp":"2025-09-12T15:14:22.211784","level":"info","event":"Filling up the DagBag from /opt/airflow/dags/pipeline_indicium.py","logger":"airflow.models.dagbag.DagBag"}
+{"timestamp":"2025-09-12T15:14:22.849143Z","level":"info","event":"Task instance is in running state","chan":"stdout","logger":"task"}
+{"timestamp":"2025-09-12T15:14:22.860442Z","level":"info","event":" Previous state of the Task instance: TaskInstanceState.QUEUED","chan":"stdout","logger":"task"}
+{"timestamp":"2025-09-12T15:14:22.871966Z","level":"info","event":"Current task name:carregar_dados_dw","chan":"stdout","logger":"task"}
+{"timestamp":"2025-09-12T15:14:22.892038Z","level":"info","event":"Dag name:pipeline_dados_indicium","chan":"stdout","logger":"task"}
+{"timestamp":"2025-09-12T15:14:22.893856Z","level":"info","event":"Iniciando o carregamento dos dados para o Data Warehouse...","chan":"stdout","logger":"task"}
+{"timestamp":"2025-09-12T15:14:22.894491Z","level":"info","event":"Conexão com o Data Warehouse bem-sucedida!","chan":"stdout","logger":"task"}
+{"timestamp":"2025-09-12T15:14:22.894975Z","level":"info","event":"Carregando dados do arquivo agencias_2025-09-12.csv para a tabela 'agencias'...","chan":"stdout","logger":"task"}
+{"timestamp":"2025-09-12T15:14:23.233216Z","level":"info","event":"Tabela 'agencias' carregada com sucesso.","chan":"stdout","logger":"task"}
+{"timestamp":"2025-09-12T15:14:23.240163Z","level":"info","event":"Carregando dados do arquivo clientes_2025-09-12.csv para a tabela 'clientes'...","chan":"stdout","logger":"task"}
+{"timestamp":"2025-09-12T15:14:23.706731Z","level":"info","event":"Tabela 'clientes' carregada com sucesso.","chan":"stdout","logger":"task"}
+{"timestamp":"2025-09-12T15:14:23.754107Z","level":"info","event":"Carregando dados do arquivo colaboradores_2025-09-12.csv para a tabela 'colaboradores'...","chan":"stdout","logger":"task"}
+{"timestamp":"2025-09-12T15:14:24.057304Z","level":"info","event":"Tabela 'colaboradores' carregada com sucesso.","chan":"stdout","logger":"task"}
+{"timestamp":"2025-09-12T15:14:24.063970Z","level":"info","event":"Carregando dados do arquivo contas_2025-09-12.csv para a tabela 'contas'...","chan":"stdout","logger":"task"}
+{"timestamp":"2025-09-12T15:14:24.521414Z","level":"info","event":"Tabela 'contas' carregada com sucesso.","chan":"stdout","logger":"task"}
+{"timestamp":"2025-09-12T15:14:24.522616Z","level":"info","event":"Carregando dados do arquivo transacoes_2025-09-12.csv para a tabela 'transacoes'...","chan":"stdout","logger":"task"}
+{"timestamp":"2025-09-12T15:14:37.298951Z","level":"info","event":"Tabela 'transacoes' carregada com sucesso.","chan":"stdout","logger":"task"}
+{"timestamp":"2025-09-12T15:14:37.305480Z","level":"info","event":"","chan":"stdout","logger":"task"}
+{"timestamp":"2025-09-12T15:14:37.309090Z","level":"info","event":"Carregamento de dados para o Data Warehouse concluído!","chan":"stdout","logger":"task"}
+{"timestamp":"2025-09-12T15:14:37.312092","level":"info","event":"Done. Returned value was: None","logger":"airflow.task.operators.airflow.providers.standard.operators.python.PythonOperator"}
+{"timestamp":"2025-09-12T15:14:37.381387Z","level":"info","event":"Task instance in success state","chan":"stdout","logger":"task"}
+{"timestamp":"2025-09-12T15:14:37.382188Z","level":"info","event":" Previous state of the Task instance: TaskInstanceState.RUNNING","chan":"stdout","logger":"task"}
+{"timestamp":"2025-09-12T15:14:37.383774Z","level":"info","event":"Task operator:<Task(PythonOperator): carregar_dados_dw>","chan":"stdout","logger":"task"}
+{"timestamp":"2025-09-12T15:50:54.816767","level":"info","event":"DAG bundles loaded: dags-folder, example_dags","logger":"airflow.dag_processing.bundles.manager.DagBundlesManager"}
+{"timestamp":"2025-09-12T15:50:54.818060","level":"info","event":"Filling up the DagBag from /opt/airflow/dags/pipeline_indicium.py","logger":"airflow.models.dagbag.DagBag"}
+{"timestamp":"2025-09-12T15:50:54.980355Z","level":"info","event":"Task instance is in running state","chan":"stdout","logger":"task"}
+{"timestamp":"2025-09-12T15:50:54.982215Z","level":"info","event":" Previous state of the Task instance: TaskInstanceState.QUEUED","chan":"stdout","logger":"task"}
+{"timestamp":"2025-09-12T15:50:54.983131Z","level":"info","event":"Current task name:carregar_dados_dw","chan":"stdout","logger":"task"}
+{"timestamp":"2025-09-12T15:50:54.983735Z","level":"info","event":"Dag name:pipeline_dados_indicium","chan":"stdout","logger":"task"}
+{"timestamp":"2025-09-12T15:50:54.985938Z","level":"info","event":"Iniciando o carregamento dos dados para o Data Warehouse...","chan":"stdout","logger":"task"}
+{"timestamp":"2025-09-12T15:50:54.991259Z","level":"info","event":"Conexão com o Data Warehouse bem-sucedida!","chan":"stdout","logger":"task"}
+{"timestamp":"2025-09-12T15:50:54.991907Z","level":"info","event":"Carregando dados do arquivo agencias_2025-09-12.csv para a tabela 'agencias'...","chan":"stdout","logger":"task"}
+{"timestamp":"2025-09-12T15:50:55.154178Z","level":"info","event":"Tabela 'agencias' carregada com sucesso.","chan":"stdout","logger":"task"}
+{"timestamp":"2025-09-12T15:50:55.164759Z","level":"info","event":"Carregando dados do arquivo clientes_2025-09-12.csv para a tabela 'clientes'...","chan":"stdout","logger":"task"}
+{"timestamp":"2025-09-12T15:50:55.317969Z","level":"info","event":"Tabela 'clientes' carregada com sucesso.","chan":"stdout","logger":"task"}
+{"timestamp":"2025-09-12T15:50:55.324371Z","level":"info","event":"Carregando dados do arquivo colaboradores_2025-09-12.csv para a tabela 'colaboradores'...","chan":"stdout","logger":"task"}
+{"timestamp":"2025-09-12T15:50:55.380877Z","level":"info","event":"Tabela 'colaboradores' carregada com sucesso.","chan":"stdout","logger":"task"}
+{"timestamp":"2025-09-12T15:50:55.381537Z","level":"info","event":"Carregando dados do arquivo contas_2025-09-12.csv para a tabela 'contas'...","chan":"stdout","logger":"task"}
+{"timestamp":"2025-09-12T15:50:55.547628Z","level":"info","event":"Tabela 'contas' carregada com sucesso.","chan":"stdout","logger":"task"}
+{"timestamp":"2025-09-12T15:50:55.548469Z","level":"info","event":"Carregando dados do arquivo transacoes_2025-09-12.csv para a tabela 'transacoes'...","chan":"stdout","logger":"task"}
+{"timestamp":"2025-09-12T15:51:00.801157Z","level":"info","event":"Tabela 'transacoes' carregada com sucesso.","chan":"stdout","logger":"task"}
+{"timestamp":"2025-09-12T15:51:00.803307Z","level":"info","event":"","chan":"stdout","logger":"task"}
+{"timestamp":"2025-09-12T15:51:00.811372Z","level":"info","event":"Carregamento de dados para o Data Warehouse concluído!","chan":"stdout","logger":"task"}
+{"timestamp":"2025-09-12T15:51:00.806270","level":"info","event":"Done. Returned value was: None","logger":"airflow.task.operators.airflow.providers.standard.operators.python.PythonOperator"}
+{"timestamp":"2025-09-12T15:51:00.894737Z","level":"info","event":"Task instance in success state","chan":"stdout","logger":"task"}
+{"timestamp":"2025-09-12T15:51:00.902728Z","level":"info","event":" Previous state of the Task instance: TaskInstanceState.RUNNING","chan":"stdout","logger":"task"}
+{"timestamp":"2025-09-12T15:51:00.905817Z","level":"info","event":"Task operator:<Task(PythonOperator): carregar_dados_dw>","chan":"stdout","logger":"task"}

@@ -1,0 +1,25 @@
+{"timestamp":"2025-09-12T15:52:59.131156","level":"info","event":"DAG bundles loaded: dags-folder, example_dags","logger":"airflow.dag_processing.bundles.manager.DagBundlesManager"}
+{"timestamp":"2025-09-12T15:52:59.132101","level":"info","event":"Filling up the DagBag from /opt/airflow/dags/pipeline_indicium.py","logger":"airflow.models.dagbag.DagBag"}
+{"timestamp":"2025-09-12T15:52:59.233436Z","level":"info","event":"Task instance is in running state","chan":"stdout","logger":"task"}
+{"timestamp":"2025-09-12T15:52:59.237522Z","level":"info","event":" Previous state of the Task instance: TaskInstanceState.QUEUED","chan":"stdout","logger":"task"}
+{"timestamp":"2025-09-12T15:52:59.238141Z","level":"info","event":"Current task name:extrair_sql","chan":"stdout","logger":"task"}
+{"timestamp":"2025-09-12T15:52:59.239550Z","level":"info","event":"Dag name:pipeline_dados_indicium","chan":"stdout","logger":"task"}
+{"timestamp":"2025-09-12T15:52:59.240871Z","level":"info","event":"Iniciando a extração dos dados do SQL...","chan":"stdout","logger":"task"}
+{"timestamp":"2025-09-12T15:52:59.247352Z","level":"info","event":"Conexão com o banco de dados fonte bem-sucedida!","chan":"stdout","logger":"task"}
+{"timestamp":"2025-09-12T15:52:59.258455Z","level":"info","event":"Extraindo dados da tabela: agencias...","chan":"stdout","logger":"task"}
+{"timestamp":"2025-09-12T15:52:59.270857","level":"warning","event":"/opt/airflow/src/indicium-projeto/scripts/extrair_sql.py:33: UserWarning: pandas only supports SQLAlchemy connectable (engine/connection) or database string URI or sqlite3 DBAPI2 connection. Other DBAPI2 objects are not tested. Please consider using SQLAlchemy.\n  df = pd.read_sql_query(query, conn)\n","logger":"py.warnings"}
+{"timestamp":"2025-09-12T15:52:59.290801Z","level":"info","event":"Tabela 'agencias' salva com sucesso.","chan":"stdout","logger":"task"}
+{"timestamp":"2025-09-12T15:52:59.291243Z","level":"info","event":"Extraindo dados da tabela: clientes...","chan":"stdout","logger":"task"}
+{"timestamp":"2025-09-12T15:52:59.341153Z","level":"info","event":"Tabela 'clientes' salva com sucesso.","chan":"stdout","logger":"task"}
+{"timestamp":"2025-09-12T15:52:59.341620Z","level":"info","event":"Extraindo dados da tabela: colaboradores...","chan":"stdout","logger":"task"}
+{"timestamp":"2025-09-12T15:52:59.341406","level":"warning","event":"/opt/airflow/src/indicium-projeto/scripts/extrair_sql.py:33: UserWarning: pandas only supports SQLAlchemy connectable (engine/connection) or database string URI or sqlite3 DBAPI2 connection. Other DBAPI2 objects are not tested. Please consider using SQLAlchemy.\n  df = pd.read_sql_query(query, conn)\n","logger":"py.warnings"}
+{"timestamp":"2025-09-12T15:52:59.356579Z","level":"info","event":"Tabela 'colaboradores' salva com sucesso.","chan":"stdout","logger":"task"}
+{"timestamp":"2025-09-12T15:52:59.357099Z","level":"info","event":"Extraindo dados da tabela: contas...","chan":"stdout","logger":"task"}
+{"timestamp":"2025-09-12T15:52:59.413820Z","level":"info","event":"Tabela 'contas' salva com sucesso.","chan":"stdout","logger":"task"}
+{"timestamp":"2025-09-12T15:52:59.415536Z","level":"info","event":"Conexão com o banco de dados fonte fechada.","chan":"stdout","logger":"task"}
+{"timestamp":"2025-09-12T15:52:59.416319Z","level":"info","event":"","chan":"stdout","logger":"task"}
+{"timestamp":"2025-09-12T15:52:59.418096Z","level":"info","event":"Extração de todas as tabelas do SQL concluída!","chan":"stdout","logger":"task"}
+{"timestamp":"2025-09-12T15:52:59.414963","level":"info","event":"Done. Returned value was: None","logger":"airflow.task.operators.airflow.providers.standard.operators.python.PythonOperator"}
+{"timestamp":"2025-09-12T15:52:59.448181Z","level":"info","event":"Task instance in success state","chan":"stdout","logger":"task"}
+{"timestamp":"2025-09-12T15:52:59.448991Z","level":"info","event":" Previous state of the Task instance: TaskInstanceState.RUNNING","chan":"stdout","logger":"task"}
+{"timestamp":"2025-09-12T15:52:59.450363Z","level":"info","event":"Task operator:<Task(PythonOperator): extrair_sql>","chan":"stdout","logger":"task"}
